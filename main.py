@@ -95,9 +95,15 @@ try:
     
     predicted_temp = model.predict([[selected_year]])[0]
     
-    st.markdown(f"""
+    st.markdown(
+        f"""
         <div style="background: linear-gradient(135deg, #3b82f6, #1d4ed8); padding: 30px; border-radius: 16px; text-align: center; color: white; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);">
             <h3 style="font-size: 1.25rem; font-weight: 500; margin-bottom: 8px;">{selected_year}년 서울 예상 연평균기온</h3>
             <div style="font-size: 3rem; font-weight: 800;">{predicted_temp:.2f} ℃</div>
         </div>
-    """, unsafe_allow_html=True)
+        """, 
+        unsafe_allow_html=True
+    )
+
+except Exception as e:
+    st.error(f"데이터를 불러오는 중 오류가 발생했습니다: {e}")
